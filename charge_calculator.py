@@ -89,25 +89,3 @@ class Charge_Calculator(object):
         charge_y = self.charge_values(pH_x)
 
         savetxt(str(name)+'.dat', numpy.column_stack((pH_x, charge_y)), fmt='%f')
-
-    def old_charge_curve(self, name):
-
-        pos_pKs = dict(positive_pKs)
-        neg_pKs = dict(negative_pKs)
-        nterm = self.sequence[0]
-        cterm = self.sequence[-1]
-        if nterm in pKnterminal:
-            pos_pKs['Nterm'] = pKnterminal[nterm]
-        if cterm in pKcterminal:
-            neg_pKs['Cterm'] = pKcterminal[cterm]
-
-        pH_x = numpy.arange(1,14,0.1)
-        charge_y = []
-
-
-        for pH in pH_x:
-            charge = self._chargeR(pH, pos_pKs, neg_pKs)
-            charge_y.append(charge)
-
-        savetxt(str(name)+'.dat', numpy.column_stack((pH_x, charge_y)), fmt='%f')
-
