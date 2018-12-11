@@ -36,7 +36,6 @@ class Charge_Calculator(object):
 
         return prot_dic
 
-
     # This function creates a dictionary with the contents of each charged aa,
     # plus Cterm and Nterm.
     def _select_charged(self, AminoAcidsContent):
@@ -63,7 +62,35 @@ class Charge_Calculator(object):
 
         return PositiveCharge - NegativeCharge
 
+    def charge_values(self, pH_x):
+
+        pos_pKs = dict(positive_pKs)
+        neg_pKs = dict(negative_pKs)
+        nterm = self.sequence[0]
+        cterm = self.sequence[-1]
+        if nterm in pKnterminal:
+            pos_pKs['Nterm'] = pKnterminal[nterm]
+        if cterm in pKcterminal:
+            neg_pKs['Cterm'] = pKcterminal[cterm]
+
+        charge_y = []
+
+
+        for pH in pH_x:
+            charge = self._chargeR(pH, pos_pKs, neg_pKs)
+            charge_y.append(charge)
+
+        return charge_y
+
     def charge_curve(self, name):
+
+        pH_x = numpy.arange(1,14,0.1)
+
+        charge_y = self.charge_values(pH_x)
+
+        savetxt(str(name)+'.dat', numpy.column_stack((pH_x, charge_y)), fmt='%f')
+
+    def old_charge_curve(self, name):
 
         pos_pKs = dict(positive_pKs)
         neg_pKs = dict(negative_pKs)
@@ -81,11 +108,6 @@ class Charge_Calculator(object):
         for pH in pH_x:
             charge = self._chargeR(pH, pos_pKs, neg_pKs)
             charge_y.append(charge)
-
-
-        #print('charge at 5.8 =', charge_y[0], 'charge at 9 =', charge_y[1])
-
-
 
         savetxt(str(name)+'.dat', numpy.column_stack((pH_x, charge_y)), fmt='%f')
 

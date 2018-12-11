@@ -8,6 +8,8 @@ from random import randint
 import math
 import copy
 
+import charge_calculator
+
 
 positive_pKs = {'Nterm': 7.5, 'K': 10.0, 'R': 12.0, 'H': 5.98}
 negative_pKs = {'Cterm': 3.55, 'D': 4.05, 'E': 4.45, 'C': 9.0, 'Y': 10.0}
@@ -116,7 +118,7 @@ def point_mut(seqin, l):
 
 
 def score_func(seq):
-    chargeobj = Charge(seq)
+    chargeobj = charge_calculator.Charge_Calculator(seq)
     pH_x = [5.8, 9]
     charges = chargeobj.charge_values(pH_x)
 
