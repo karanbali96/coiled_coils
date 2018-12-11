@@ -16,13 +16,6 @@ pKnterminal = {'A': 7.59, 'M': 7.0, 'S': 6.93, 'P': 8.36, 'T': 6.82, 'V': 7.44,
                'E': 7.7}
 charged_aas = ('K', 'R', 'H', 'D', 'E', 'C', 'Y')
 
-l = [['I'],
-       ['K','H', 'S', 'T', 'Y', 'C', 'R', 'D', 'E'],
-       ['E', 'K','H', 'S', 'T', 'Y', 'C', 'R', 'D'],
-       ['L'],
-       ['E'],
-       ['H','S', 'T', 'Y', 'C', 'R', 'D', 'E', 'K'],
-       ['K']]
 class Charge(object):
 
     def __init__(self, ProteinSequence):
