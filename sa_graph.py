@@ -12,13 +12,13 @@ start = sys.argv[1]
 sol = sys.argv[2]
 iterations, scores = loadtxt('start_' + str(start) + '_end_' + str(sol) + '.dat', unpack=True, usecols=[0,1])
 
-#def movingaverage(values, window):
-    #weights = np.repeat(1.0, window) / window
-    #smas = np.convolve(values, weights, 'valid')
-    #return smas
+def movingaverage(values, window):
+    weights = np.repeat(1.0, window) / window
+    smas = np.convolve(values, weights, 'valid')
+    return smas
 
-#iterations = movingaverage(iterations, 10)
-#scores = movingaverage(scores, 10)
+iterations = movingaverage(iterations, 10)
+scores = movingaverage(scores, 10)
 
 fig = plt.figure()
 
