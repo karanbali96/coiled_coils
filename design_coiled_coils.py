@@ -3,6 +3,7 @@
 import math, getopt, sys
 
 import simulated_annealing
+import mut_functions
 
 perm_res = [['I'],
        ['K','H', 'S', 'T', 'Y', 'C', 'R', 'D', 'E'],
@@ -13,8 +14,8 @@ perm_res = [['I'],
        ['K']]
 
 
-seq = simulated_annealing.random_seq(perm_res)
-simulated_annealing.anneal(seq, simulated_annealing.score_func, simulated_annealing.point_mut, perm_res)
+seq = mut_functions.random_seq(perm_res)
+simulated_annealing.anneal(seq, simulated_annealing.score_func, mut_functions.point_mut, perm_res)
 
 
 
