@@ -12,7 +12,9 @@ perm_res = [['I'],
        ['L'],
        ['E'],
        ['H','S', 'T', 'Y', 'R', 'D', 'E', 'K'],
-       ['K']]
+       ['E']]
+
+perm
 
 perm_res_concat = perm_res + perm_res + perm_res + perm_res
 
