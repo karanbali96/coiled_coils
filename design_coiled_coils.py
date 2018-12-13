@@ -14,13 +14,19 @@ perm_res = [['I'],
        ['H','S', 'T', 'Y', 'R', 'D', 'E', 'K'],
        ['E']]
 
-perm
+perm_res_2 = [['I'],
+       ['K','H', 'S', 'T', 'Y', 'R', 'D', 'E'],
+       ['E', 'K','H', 'S', 'T', 'Y','R', 'D'],
+       ['L'],
+       ['K'],
+       ['H','S', 'T', 'Y', 'R', 'D', 'E', 'K'],
+       ['K']]
 
-perm_res_concat = perm_res + perm_res + perm_res + perm_res
+perm_res_concat = perm_res + perm_res + perm_res_2 + perm_res_2
 
 
 seq = mut_functions.random_seq(perm_res_concat)
-simulated_annealing.anneal(seq, score_functions.score_func, mut_functions.point_mut, perm_res_concat)
+simulated_annealing.anneal(seq, score_functions.score_func_2, mut_functions.point_mut, perm_res_concat)
 
 
 
